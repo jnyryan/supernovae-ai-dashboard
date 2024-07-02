@@ -8,3 +8,6 @@ Prompt to ChatGPT 4o
 > Take the PDF article and render it as an interactive HTML page that i can run as a single page app. Make it a dashboard style page that is fun to learn from and add animation where possible.
 
 > render the page again as html with more scientific detail
+
+> can you add an animation of a super novae at the end using 3.js
+

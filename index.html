@@ -66,12 +66,23 @@
         max-width: 100%;
         height: auto;
     }
+    .supernova-container {
+        width: 100%;
+        height: 300px;
+        background: #000;
+        margin-top: 20px;
+    }
 </style>
 </head>
 <body>
 
 <div class="header">
     <h1>Supernovae and Human Evolution</h1>
+</div>
+
+<div class="image-container">
+    <img src="https://www.nasa.gov/sites/default/files/thumbnails/image/hs-2015-02-a-large_web.jpg" alt="Supernova Image">
+    <p>Image Credit: NASA</p>
 </div>
 
 <div class="container">
@@ -117,22 +128,71 @@
         <p>While supernovae could have influenced the evolution of bipedalism in human ancestors, such events are not likely to recur in the near future. The nearest star capable of a supernova, Betelgeuse, is too far away to have similar effects. However, the impact of past cosmic events on Earth's environment and the evolution of life continues to be a fascinating area of research.</p>
     </div>
 
-    <div class="image-container">
-        <img src="https://www.nasa.gov/sites/default/files/thumbnails/image/hs-2015-02-a-large_web.jpg" alt="Supernova Image">
-        <p>Image Credit: NASA</p>
-    </div>
+    <div class="supernova-container" id="supernova"></div>
 </div>
 
 <div class="footer">
     <p>&copy; 2024 The University of Kansas</p>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const animatedTexts = document.querySelectorAll('.animated-text');
         animatedTexts.forEach(text => {
             text.style.opacity = 1;
         });
+
+        // Three.js Supernova Animation
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 300, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, 300);
+        document.getElementById('supernova').appendChild(renderer.domElement);
+
+        // Supernova effect using particles
+        const particleCount = 1000;
+        const particles = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const velocities = new Float32Array(particleCount * 3);
+
+        for (let i = 0; i < particleCount; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 2;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 2;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 2;
+
+            velocities[i * 3] = (Math.random() - 0.5) * 0.02;
+            velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.02;
+            velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.02;
+        }
+
+        particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particles.setAttribute('velocity', new THREE.BufferAttribute(velocities, 3));
+
+        const particleMaterial = new THREE.PointsMaterial({ color: 0xffffff });
+        const particleSystem = new THREE.Points(particles, particleMaterial);
+        scene.add(particleSystem);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const positions = particles.attributes.position.array;
+            const velocities = particles.attributes.velocity.array;
+
+            for (let i = 0; i < particleCount; i++) {
+                positions[i * 3] += velocities[i * 3];
+                positions[i * 3 + 1] += velocities[i * 3 + 1];
+                positions[i * 3 + 2] += velocities[i * 3 + 2];
+            }
+
+            particles.attributes.position.needsUpdate = true;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
     });
 </script>
 
