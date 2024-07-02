@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supernovae and Human Evolution</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    .header, .footer {
+        background: #003366;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .container {
+        padding: 20px;
+        max-width: 800px;
+        margin: auto;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .section {
+        margin-bottom: 20px;
+    }
+    .section h2 {
+        color: #003366;
+    }
+    .section p {
+        text-align: justify;
+    }
+    .card {
+        background: #e6f2ff;
+        padding: 10px;
+        margin: 10px 0;
+        border-left: 5px solid #003366;
+        transition: transform 0.3s;
+    }
+    .card:hover {
+        transform: scale(1.02);
+    }
+    .animated-text {
+        animation: slideIn 2s;
+    }
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Supernovae and Human Evolution</h1>
+</div>
+
+<div class="container">
+    <div class="section animated-text">
+        <h2>Introduction</h2>
+        <p>Supernovae bombarded Earth with cosmic energy starting as many as 8 million years ago, with a peak some 2.6 million years ago, initiating an avalanche of electrons in the lower atmosphere and setting off a chain of events that feasibly ended with bipedal hominins such as homo habilis, dubbed "handy man."</p>
+    </div>
+
+    <div class="section">
+        <h2>Key Points</h2>
+        <div class="card">
+            <h3>Cosmic Energy and Earth</h3>
+            <p>Supernovae bombarded Earth with cosmic energy starting as many as 8 million years ago, with a peak some 2.6 million years ago.</p>
+        </div>
+        <div class="card">
+            <h3>Effect on Atmosphere</h3>
+            <p>The cosmic energy initiated an avalanche of electrons in the lower atmosphere, possibly increasing cloud-to-ground lightning strikes.</p>
+        </div>
+        <div class="card">
+            <h3>Impact on Evolution</h3>
+            <p>The increased lightning strikes could have ignited forest fires, leading to savannas and prompting ancestors of homo sapiens to walk upright.</p>
+        </div>
+    </div>
+
+    <div class="section animated-text">
+        <h2>Conclusion</h2>
+        <p>While supernovae could have influenced the evolution of bipedalism in human ancestors, no such events are likely to occur again soon. The nearest star capable of a supernova is Betelgeuse, which is too far to have a significant impact.</p>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 The University of Kansas</p>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const animatedTexts = document.querySelectorAll('.animated-text');
+        animatedTexts.forEach(text => {
+            text.style.opacity = 1;
+        });
+    });
+</script>
+
+</body>
+</html>
